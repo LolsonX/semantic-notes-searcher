@@ -1,0 +1,19 @@
+query,expected_top_result,related_optional_result
+How can I verify who is calling a protected endpoint?,security/jwt.md,security/oauth.md
+How do I let another app access my account without giving it my password?,security/oauth.md,security/permissions.md
+What is the safest way to save login credentials?,security/passwords.md,security/jwt.md
+How can I restrict admin-only operations?,security/permissions.md,security/jwt.md
+How do I speed up repeated requests to my service?,backend/caching.md,backend/sql-indexes.md
+Why is my database lookup slow?,backend/sql-indexes.md,backend/caching.md
+How should I design endpoints for creating and deleting records?,backend/rest.md,backend/rate-limits.md
+How can I avoid making users wait for email sending?,backend/jobs.md,backend/rest.md
+How can I stop clients from overwhelming my API?,backend/rate-limits.md,devops/monitoring.md
+How do I package my app so it runs consistently on another machine?,devops/docker.md,devops/cicd.md
+How do I automatically test changes before merging?,devops/cicd.md,devops/docker.md
+How can I know when production is unhealthy?,devops/monitoring.md,devops/logging.md
+How can I connect error events from the same request?,devops/logging.md,devops/monitoring.md
+Why does my homemade loaf need time to ferment?,personal/bread.md,personal/coffee.md
+How often should I water my vegetable plants?,personal/gardening.md,personal/running.md
+What should I bring on a two-day holiday?,personal/travel.md,personal/running.md
+How do I start exercising without overdoing it?,personal/running.md,personal/travel.md
+Why does my espresso taste different after changing the grind?,personal/coffee.md,personal/bread.md

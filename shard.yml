@@ -1,0 +1,17 @@
+name: semantic_notes_searcher
+version: 0.1.0
+
+authors:
+  - Karol Ostrowski <xlolsonx@gmail.com>
+
+targets:
+  semantic_notes_searcher:
+    main: src/semantic_notes_searcher.cr
+
+dependencies:
+  sqlite3:
+    github: crystal-lang/crystal-sqlite3
+
+crystal: '>= 1.22.0'
+
+license: MIT
