@@ -4,7 +4,7 @@ require "json"
 module SemanticNotesSearcher
   module Repositories
     class Embeddings < Base
-      EMBEDDING_MODEL      = "nomic-embed-text"
+      EMBEDDING_MODEL      = "embeddinggemma-2"
       EMBEDDING_MODEL_HOST = "localhost"
       EMBEDDING_MODEL_PORT = 11434
       EMBEDDING_ENDPOINT   = "/api/embed"

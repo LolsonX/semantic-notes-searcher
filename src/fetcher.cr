@@ -1,6 +1,6 @@
 module SemanticNotesSearcher
   class Fetcher
-    @notes : Array(Note)?
+    @notes : Array(Models::Note)?
     @embedding_repository : Repositories::Embeddings
 
     def initialize(@db : DB::Database, @embedding_repository = Repositories::Embeddings.new); end
@@ -18,13 +18,13 @@ module SemanticNotesSearcher
           .first(number_of_results)
       end
 
-      [] of Hash(Symbol, Note | Float32)
+      [] of Hash(Symbol, Models::Note | Float32)
     end
 
-    private def notes : Array(Note)
-      @notes ||= Array(Note).new.tap do |arr|
-        @db.query("SELECT id, path,  content_hash, embedding, indexed_at, model FROM notes") do |result_set|
-          result_set.each { arr << Note.from_db_result(result_set) }
+    private def notes : Array(Models::Note)
+      @notes ||= Array(Models::Note).new.tap do |arr|
+        @db.query("SELECT id, path, content_hash, embedding, indexed_at, model FROM notes") do |result_set|
+          result_set.each { arr << Models::Note.from_db_result(result_set) }
         end
       end
     end

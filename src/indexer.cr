@@ -29,9 +29,10 @@ module SemanticNotesSearcher
         file_content = File.read(md_file_path)
         content_hash = sha256_hash(file_content)
         next skipped += 1 if prev_content_hash == content_hash
+
         if response = @embedding_repository.generate(file_content)
           indexed += 1
-          note = Note.new(
+          note = Models::Note.new(
             id: prev_id,
             path: md_file_path,
             embedding: response.embeddings.to_json,
@@ -41,9 +42,11 @@ module SemanticNotesSearcher
           )
 
           if prev_content_hash
-            @db.exec note.to_update_sql
+            sql, params = note.update_statement
+            @db.exec sql, args: params
           else
-            @db.exec note.to_insert_sql
+            sql, params = note.insert_statement
+            @db.exec sql, args: params
             id += 1
           end
         end

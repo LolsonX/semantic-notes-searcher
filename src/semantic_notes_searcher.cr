@@ -7,7 +7,7 @@
 require "db"
 require "sqlite3"
 require "./cli"
-require "./note"
+require "./models"
 require "./repositories"
 require "./fetcher"
 require "./indexer"
@@ -31,7 +31,7 @@ module SemanticNotesSearcher
           if results.size.positive?
             results.each_with_index(1) do |note_with_similarity, index|
               similarity = note_with_similarity[:similarity].as(Float32)
-              note = note_with_similarity[:note].as(Note)
+              note = note_with_similarity[:note].as(Models::Note)
               preview = File.read(note.path)[0..150]
               puts "#{index}. #{note.path}"
               puts "Similarity: #{similarity}"
