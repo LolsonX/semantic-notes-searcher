@@ -6,6 +6,7 @@
 
 require "db"
 require "sqlite3"
+require "./di"
 require "./cli"
 require "./models"
 require "./repositories"
@@ -77,4 +78,17 @@ module SemanticNotesSearcher
   end
 end
 
-SemanticNotesSearcher.run
+# SemanticNotesSearcher.run
+
+@[SemanticNotesSearcher::DI::Injectable]
+class SomeClass
+  getter test : String
+  getter test_value : String
+
+  def initialize(@test : String, @[SemanticNotesSearcher::DI::Inject("test_value")] @test_value : String); end
+end
+
+SemanticNotesSearcher::DI.container.register("test_value", "injected!")
+a = SomeClass.__di_build(SemanticNotesSearcher::DI.container)
+puts a.test
+puts a.test_value
